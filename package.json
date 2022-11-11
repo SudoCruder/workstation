@@ -1,0 +1,25 @@
+{
+  "name": "workstation",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pycloudts/workstation.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "pycloudts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pycloudts/workstation/issues"
+  },
+  "homepage": "https://github.com/pycloudts/workstation#readme"
+}
