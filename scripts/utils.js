@@ -1,3 +1,5 @@
-function showMessage(message) {
-    document.getElementById('message').textContent = message;
+function showMessage(tragetID, message) {
+  if(document.getElementById(tragetID)) {
+    document.getElementById(tragetID).textContent = message;
+  }
 }

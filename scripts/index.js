@@ -1,3 +1,3 @@
-console.log("Workstation loading...");
+let user = "PyCloudTs";
 
-showMessage("Lets get to work!")
+showMessage("message",`Lets get to work! ${user}`)
