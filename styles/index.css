@@ -3,9 +3,12 @@
   color: #ffffff;
 }
 
-.flex {
-  display: flex;
-  align-items: center;
+main {
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
 }
 
 summary {
@@ -13,11 +16,33 @@ summary {
   margin-bottom: 15px;
 }
 
+.flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+
 /*
   Header
 */
 header {
   border-bottom: 1px solid #ffffff;
+  justify-content: space-between;
+}
+
+/*
+  Footer
+*/
+
+/*
+  Goals & Tasks
+*/
+.done {
+  text-decoration: line-through;
+  color: #212121;
 }
 
 /*
