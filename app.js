@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
+const bodyParser = require('body-parser')
 const path = require('path')
+const db = require('./queries')
 const port = 3000
 
 // Register ejs as .html. If we did not call this, we would need to name our views foo.ejs instead of foo.html. 
@@ -13,6 +15,13 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'html');
+
+app.use(bodyParser.json())
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+)
 
 // Dummy users
 var users = [
@@ -34,5 +43,7 @@ app.get('/quiz', function(res, res) {
     title: "Quiz"
   })
 })
+
+app.get('/users', db.getUsers)
 
 app.listen(port, () => console.log(`Server running on port ${port}...`))
