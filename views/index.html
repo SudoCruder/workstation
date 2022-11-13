@@ -1,0 +1,23 @@
+<%- include('shared/head.html') -%>
+
+<%- include('shared/navbar.html') -%>
+  
+<main class="flex">
+  <div id="message"></div>
+  <div id="goals">
+    <h2>Learning Objectives</h2> 
+  </div>
+  <div id="tasks">
+    <h2>Tasks</h2>
+  </div>
+  <div class="users">
+    <h1>Users</h1>
+    <ul id="users">
+      <% users.forEach(function(user){ %>
+        <li><%= user.name %> &lt;<%= user.email %>&gt;</li>
+      <% }) %>
+    </ul>
+  </div>
+</main>
+
+<%- include('shared/footer.html') -%>
