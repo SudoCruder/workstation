@@ -4,11 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "lite-server",
     "start": "node app.js"
-  },
-  "devDependencies": {
-    "lite-server": "^2.6.1"
   },
   "repository": {
     "type": "git",
