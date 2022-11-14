@@ -3,7 +3,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const path = require('path')
 const db = require('./queries')
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 
 // Register ejs as .html. If we did not call this, we would need to name our views foo.ejs instead of foo.html. 
 // The __express method is simply a function that engines use to hook into the Express view system by default, 
