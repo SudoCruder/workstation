@@ -5,6 +5,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const path = require('path')
 const db = require('./queries')
+
 const PORT = process.env.PORT || 3001
 const HOST = '0.0.0.0'
 
@@ -33,7 +34,9 @@ var users = [
   { name: 'jane', email: 'jane@users.com' }
 ];
 
-app.get('/', function(req, res) {
+
+// Routes - Website
+app.get('/', function(req, res, next) {
   res.render('index', {
     users: users,
     title: "Workstation",
@@ -41,16 +44,20 @@ app.get('/', function(req, res) {
   })
 })
 
-app.get('/quiz', function(res, res) {
+app.get('/quiz', function(req, res, next) {
   res.render('pages/quiz', {
     title: "Quiz"
   })
 })
 
-app.get("/api", (req, res) => {
-  res.json({ message: "Hello from server!" });
+// Routes - API 
+app.get("/api", (req, res, next) => {
+  res.json({ message: "Hello from server!!" });
 });
 
-app.get('/api/users', db.getUsers)
+app.get('/api/users', (req, res, next) => {
+  res.json({users: db.getUsers})
+});
+
 
 app.listen(PORT, () => console.log(`Running on http://${HOST}:${PORT}`))
