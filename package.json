@@ -9,17 +9,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pycloudts/workstation.git"
+    "url": "git+https://github.com/sudocruder/workstation.git"
   },
   "keywords": [
     "javascript"
   ],
-  "author": "pycloudts",
+  "author": "sudocruder",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pycloudts/workstation/issues"
+    "url": "https://github.com/sudocruder/workstation/issues"
   },
-  "homepage": "https://github.com/pycloudts/workstation#readme",
+  "homepage": "https://github.com/sudocruder/workstation#readme",
   "dependencies": {
     "ejs": "^3.1.8",
     "express": "^4.18.2",

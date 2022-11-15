@@ -1,9 +1,12 @@
+'use strict';
+
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const path = require('path')
 const db = require('./queries')
 const PORT = process.env.PORT || 3001
+const HOST = '0.0.0.0'
 
 // Register ejs as .html. If we did not call this, we would need to name our views foo.ejs instead of foo.html. 
 // The __express method is simply a function that engines use to hook into the Express view system by default, 
@@ -25,9 +28,9 @@ app.use(
 
 // Dummy users
 var users = [
-  { name: 'tobi', email: 'tobi@learnboost.com' },
-  { name: 'loki', email: 'loki@learnboost.com' },
-  { name: 'jane', email: 'jane@learnboost.com' }
+  { name: 'tobi', email: 'tobi@users.com' },
+  { name: 'loki', email: 'loki@users.com' },
+  { name: 'jane', email: 'jane@users.com' }
 ];
 
 app.get('/', function(req, res) {
@@ -50,4 +53,4 @@ app.get("/api", (req, res) => {
 
 app.get('/api/users', db.getUsers)
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}...`))
+app.listen(PORT, () => console.log(`Running on http://${HOST}:${PORT}`))
