@@ -4,10 +4,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const path = require('path')
-const db = require('./queries')
-
-const fortuneMessages = require('./lib/fortuneMessages')
-const usersList = require('./lib/usersList')
+const handlers = require('./routes/handlers')
 
 const PORT = process.env.PORT || 3001
 const HOST = 'localhost'
@@ -32,54 +29,25 @@ app.use(
 
 // Routes - Website
 // ----------------
-app.get('/', function(req, res, next) {
-  res.render('index', {
-    users: usersList.getUsers(),
-    title: "Workstation"
-  })
-})
+app.get('/', handlers.homepage)
 
-app.get('/about', function(req, res, next) {
-  res.render('pages/about', {
-    title: "About - Workstation",
-    fortune: fortuneMessages.getFortuneMessage(),
-  })
-})
+app.get('/about', handlers.aboutPage)
 
-app.get('/quiz', function(req, res, next) {
-  res.render('pages/quiz', {
-    title: "Quiz - Workstation"
-  })
-})
+app.get('/quiz', handlers.quizPage)
 
 
 // Routes - API
 // ----------------
-app.get("/api", (req, res, next) => {
-  res.json({ message: "Hello from server!!" });
-});
+app.get("/api", handlers.api);
 
-app.get('/api/users', (req, res, next) => {
-  res.json({
-    "status": 200,
-    "statusText": "OK",
-    "message": "All users retrieved.",
-    "users": users})
-});
-
-// app.get('/api/users', db.getUsers)
+app.get('/api/users', handlers.apiUsers);
 
 
 // Routes - Errors
 // ----------------
-app.use((req, res) => {
-  res.status(404)
-  res.render('shared/404', { title: "404 - Workstation" })
-})
+app.use(handlers.notFound)
 
-app.use((err, req, res, next) => {
-  res.status(500)
-  res.render('shared/500', { title: "500 - Workstation" })
-})
+app.use(handlers.serverError)
+
 
 app.listen(PORT, () => console.log(`Running on http://${HOST}:${PORT}`))
