@@ -24,6 +24,11 @@ summary {
   align-items: center;
 }
 
+.xy-flex-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /*
   Header

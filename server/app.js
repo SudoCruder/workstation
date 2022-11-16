@@ -9,8 +9,8 @@ const db = require('./queries')
 const PORT = process.env.PORT || 3001
 const HOST = 'localhost'
 
-// Register ejs as .html. If we did not call this, we would need to name our views foo.ejs instead of foo.html. 
-// The __express method is simply a function that engines use to hook into the Express view system by default, 
+// Register ejs as .html. If we did not call this, we would need to name our views foo.ejs instead of foo.html.
+// The __express method is simply a function that engines use to hook into the Express view system by default,
 // so if we want to change "foo.ejs" to "foo.html"  we simply pass _any_ function, in this case `ejs.__express`.
 app.engine('.html', require('ejs').__express);
 
@@ -52,7 +52,7 @@ app.get('/quiz', function(req, res, next) {
 })
 
 
-// Routes - API 
+// Routes - API
 // ----------------
 app.get("/api", (req, res, next) => {
   res.json({ message: "Hello from server!!" });
@@ -72,15 +72,13 @@ app.get('/api/users', (req, res, next) => {
 // Routes - Errors
 // ----------------
 app.use((req, res) => {
-  res.type('text/plain')
   res.status(404)
-  res.send('404 - Not Found')
+  res.render('shared/404', { title: "404 - Workstation" })
 })
 
-app.use((req, res) => {
-  res.type('text/plain')
+app.use((err, req, res, next) => {
   res.status(500)
-  res.send('500 - Server Error')
+  res.render('shared/500', { title: "500 - Workstation" })
 })
 
 app.listen(PORT, () => console.log(`Running on http://${HOST}:${PORT}`))
