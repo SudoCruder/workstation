@@ -13,12 +13,11 @@ const HOST = 'localhost'
 // The __express method is simply a function that engines use to hook into the Express view system by default,
 // so if we want to change "foo.ejs" to "foo.html"  we simply pass _any_ function, in this case `ejs.__express`.
 app.engine('.html', require('ejs').__express);
+app.set('view engine', 'html');
 
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.set('view engine', 'html');
 
 app.use(bodyParser.json())
 app.use(
