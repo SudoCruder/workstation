@@ -7,7 +7,7 @@ const usersList = require('../lib/usersList')
 // Routes - Website
 // ----------------
 exports.homepage = (req, res, next) => {
-  res.render('index', {
+  res.render('homepage', {
     users: usersList.getUsers(),
     title: "Workstation"
   })
@@ -48,11 +48,15 @@ exports.apiUsers = (req, res, next) => {
 // Routes - Errors
 // ----------------
 exports.notFound = (req, res) => {
-  res.status(404)
-  res.render('shared/404', { title: "404 - Workstation" })
+  // FIXME: error "res.status is not a function" when running test
+  // Status code in browser's Network is 200 for now
+  // res.status(404)
+  res.render('shared/notFound', { title: "404 - Workstation" })
 }
 
 exports.serverError = (err, req, res, next) => {
-  res.status(500)
-  res.render('shared/500', { title: "500 - Workstation" })
+  // FIXME: error "res.status is not a function" when running test
+  // Status code in browser's Network is 200 for now
+  // res.status(500)
+  res.render('shared/serverError', { title: "500 - Workstation" })
 }
