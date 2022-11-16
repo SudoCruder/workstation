@@ -6,6 +6,9 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const db = require('./queries')
 
+const fortuneMessages = require('./lib/fortuneMessages')
+const usersList = require('./lib/usersList')
+
 const PORT = process.env.PORT || 3001
 const HOST = 'localhost'
 
@@ -26,27 +29,26 @@ app.use(
   })
 )
 
-// Dummy users
-const users = [
-  { name: 'tobi', email: 'tobi@users.com' },
-  { name: 'loki', email: 'loki@users.com' },
-  { name: 'jane', email: 'jane@users.com' }
-];
-
 
 // Routes - Website
 // ----------------
 app.get('/', function(req, res, next) {
   res.render('index', {
-    users: users,
-    title: "Workstation",
-    header: "Some users"
+    users: usersList.getUsers(),
+    title: "Workstation"
+  })
+})
+
+app.get('/about', function(req, res, next) {
+  res.render('pages/about', {
+    title: "About - Workstation",
+    fortune: fortuneMessages.getFortuneMessage(),
   })
 })
 
 app.get('/quiz', function(req, res, next) {
   res.render('pages/quiz', {
-    title: "Quiz"
+    title: "Quiz - Workstation"
   })
 })
 
